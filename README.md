@@ -44,20 +44,23 @@ Using JavaScript, it fills in the following values:
 
 Then for each field, it messes with the classes and simulates a "change" event, to fool the form into accepting a submission from you without you physically typing into the fields. 
 
+## Alternate Version Without Email Prompt 
+
 You can speed things up even more if you have a Gmail account (or any email provider that allows you to create alias addresses by appending "+something" to your username). Use the below bookmarklet, and set your gmail username and domain below near the top of the script before pasting it into the bookmarklet. 
 
-The bookmarklet will then no longer ask you to pick an email address, but will instead fill it in for you as **yourusername**+sandbox*[number]*@**yourdomain.com**. The *[number]* just uses the number of seconds since the epoch. 
+The bookmarklet will then no longer ask you to pick an email address, but will instead fill it in for you as **username**+sand-*[number]*@**yourdomain.com**. The *[number]* picking algorithm below just uses the number of seconds since the epoch, and keeps the last 5 digits.
 
     javascript: 
     var password = 'SandboxSux1';
-    var gmailuser = 'yourusername';
-    var gmaildomain = 'yourdomain.com';
+    var mailuser = 'username';
+    var mailsuffix = '+sand-' + (Math.floor((new Date()).getTime()/1000) + '').substring(5);
+    var maildomain = 'yourdomain.com';
     var classesToAdd = 'ng-isolate-scope ng-dirty ng-valid hasVisited ng-valid-required'; 
     var classesToRemove = 'ng-pristine ng-invalid ng-invalid-required invalid-srvr';
     var press = jQuery.Event("change");
     $(document.forms[0][0]).val('John').addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
     $(document.forms[0][1]).val('Doe').addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
-    $(document.forms[0][4]).val(gmailuser + '+sandbox' + (new Date()).getTime() + '@' + gmaildomain).addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
+    $(document.forms[0][4]).val(mailuser + mailsuffix + '@' + maildomain).addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
     $(document.forms[0][5]).val(password).addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
     $(document.forms[0][6]).val(password).addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
     $(document.forms[0][7]).val('Random Number').addClass(classesToAdd).removeClass(classesToRemove).trigger(press);
