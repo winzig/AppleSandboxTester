@@ -26,6 +26,10 @@ Paste this JavaScript in as the new address:
 
 When you're on the [Add Sandbox Tester](https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/users_roles/sandbox_users/new) page, you can now click the new "Sandbox Tester" bookmark, and it will fill in the form and submit it. Note that you will probably want to edit some of the JavaScript to suit your preferences.
 
+## What It Looks Like
+
+<img src="https://raw.githubusercontent.com/winzig/AppleSandboxTester/master/UsingAppleSandboxTester.gif" width="400" height="360"/>
+
 ## What It Does
 
 Using JavaScript, it fills in the following values:
